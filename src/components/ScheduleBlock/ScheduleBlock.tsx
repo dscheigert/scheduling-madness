@@ -49,7 +49,6 @@ function ScheduleBlock(props : any) {
 
     useEffect(() => {
         if(!isNaN(controlledPosition.x)){
-            console.log(evaluateHourForXValue(controlledPosition.x));
             setChosenHour(evaluateHourForXValue(controlledPosition.x));
         }
     },[controlledPosition]);

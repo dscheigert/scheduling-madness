@@ -45,7 +45,7 @@ function DayBlock(props :any) {
         </div>
         <div className="ScheduleBlocks">
           {blockedHoursList.map((block: HourBlock) => {
-              return (<div className="BlockedHour" style={{left : `${block.xValue}px`, width:`${hourBlockWidth*block.size}px`,position:"absolute",backgroundColor:"gray", height:"4vw"}}></div>)
+              return (<div key={block.hour} className="BlockedHour" style={{left : `${block.xValue}px`, width:`${hourBlockWidth*block.size}px`,position:"absolute",backgroundColor:"gray", height:"4vw"}}></div>)
               })}
               <ScheduleBlock 
                 isLevelComplete={isCompleted} 

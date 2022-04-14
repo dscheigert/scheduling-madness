@@ -2,10 +2,22 @@
   width: 70%;
   margin: auto; 
   position: relative;
+  margin-top: 10%;
 }
 .Calendar {
   border: 1px solid black;
   width: 70vw;
-  height: 40vw;
+  height: 100%;
   text-align: center;
+}
+.StandardButton{
+  width: 100px;
+  height: 50px;
+}
+.ButtonWrapper{
+  padding: 10px;
+  display:inline-block
+}
+.WinMessage{
+  padding-top:1rem;
 }

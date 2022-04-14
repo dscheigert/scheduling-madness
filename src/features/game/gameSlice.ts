@@ -39,6 +39,18 @@ export const gameSlice = createSlice({
       state.gameCompleted = true;
       state.timerAction = timerActions.STOP;
     },
+    goHome: (state) => {
+      state.timerAction = timerActions.RESET;
+      //TODO: randomize level order?
+      state.gameCompleted = false;
+      state.levels.forEach((level) => {
+        level.active = false;
+        level.completed = false;
+      })
+      state.currentLevel = 0;
+      state.collisionBlocks = state.levels[state.currentLevel].collisionBlocks;
+      state.gameStarted = false;
+    },
     restart: (state) => {
       state.timerAction = timerActions.RESET;
       //TODO: randomize level order?
@@ -70,6 +82,17 @@ export const gameSlice = createSlice({
     },
     updateCollisionBlocks: (state, action: PayloadAction<number[]>) => {
       state.collisionBlocks = action.payload;
+    },
+    shuffleLevels: (state) => {
+      let currentIndex = state.levels.length,  randomIndex;
+      while (currentIndex != 0) {
+    
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      [state.levels[currentIndex], state.levels[randomIndex]] = [
+        state.levels[randomIndex], state.levels[currentIndex]];
+      }
     }
   },
   // The `extraReducers` field lets the slice handle actions defined elsewhere,
@@ -86,7 +109,7 @@ export const gameSlice = createSlice({
 //   },
 });
 
-export const { begin, end, completeLevel, restart, recordPoints } = gameSlice.actions;
+export const { begin, end, completeLevel, restart, recordPoints, goHome, shuffleLevels } = gameSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of

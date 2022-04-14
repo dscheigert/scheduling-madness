@@ -1,0 +1,13 @@
+.Footer{
+    background-color: #00619e;
+    min-height: 3vw;
+    text-align: left;
+    padding: 10px;
+}
+.Footer > a{
+    color: white;
+    padding-right:10px;
+}
+.Footer > a:hover{
+    color: purple;
+}

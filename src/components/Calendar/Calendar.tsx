@@ -1,14 +1,15 @@
 import DayBlock from "../DayBlock/DayBlock";
 import { Level } from "../../data/interfaces";
-import { begin, restart, selectIsGameComplete, selectIsGameStarted, selectRecordedPoints } from '../../features/game/gameSlice';
+import { begin, restart, selectIsGameComplete, selectIsGameStarted, selectRecordedPoints, goHome, shuffleLevels } from '../../features/game/gameSlice';
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import Timer from "../Timer/Timer";
+import {Button, Typography} from '@mui/material';
 import './Calendar.css'; // Tell webpack that Button.js uses these styles
 
 
 function Calendar(props : any) {
   const {levels} = props;
-  const STARTING_POINTS = 5000;
+  const STARTING_POINTS = 1000;
   //redux
   const dispatch = useAppDispatch();
   const gameStarted = useAppSelector(selectIsGameStarted);
@@ -17,24 +18,44 @@ function Calendar(props : any) {
 
   //handlers
   const handleBegin =() => {
+    dispatch(shuffleLevels());
     dispatch(begin());
   }
 
+  const handleLaunchHowTo =() => {
+    window.alert("pending")
+  }
+
   const handleRestart =() => {
+    dispatch(shuffleLevels());
     dispatch(restart());
   }
 
+  const handleGoHome = () => {
+    dispatch(goHome());
+  }
+
+  //TODO: move some of the functionality here into 'home' component
   return (
     <div className="CalendarWrapper">
-      {(!gameCompleted && !gameStarted ) && <button onClick={handleBegin}>Begin</button>}
-      {gameCompleted && <button onClick={handleRestart}>Restart</button>}
-      {gameCompleted && <div>You win with {totalPoints} points!</div>}
+      {(!gameCompleted && !gameStarted ) && 
+      <>
+      <div className="ButtonWrapper"><Button variant="outlined" className="StandardButton" onClick={handleBegin}>Begin</Button></div>
+      <div className="ButtonWrapper"><Button variant="outlined" className="StandardButton" onClick={handleLaunchHowTo}>How to Play</Button></div>
+      </>
+      }
+      {gameCompleted && 
+        <>
+        <div className="ButtonWrapper"><Button variant="outlined" className="StandardButton" onClick={handleGoHome}>Home</Button></div>
+       <div className="ButtonWrapper"><Button variant="outlined" className="StandardButton" onClick={handleRestart}>Restart</Button></div></>}
+      {gameCompleted && <Typography className="WinMessage" variant="h6">You win with {totalPoints} points!</Typography>}
       {gameStarted &&  <Timer display={!gameCompleted} startingPoints={STARTING_POINTS}></Timer>}
       {(gameStarted && !gameCompleted) && <div className="Calendar">
         {levels.map((level : Level, i: number) => 
         {
           const dayBlock = level.active ? <DayBlock 
           level = {i}
+          key = {i}
           winningHours={level.winningHours}
           userBlockSize={level.userBlockSize} 
           initialHour={level.initialHour} 
@@ -47,7 +68,8 @@ function Calendar(props : any) {
           return dayBlock;
         }
         )}
-      </div>}             
+      </div>
+      }             
     </div>
   );
 }
