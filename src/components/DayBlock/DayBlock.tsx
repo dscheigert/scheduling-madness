@@ -4,7 +4,7 @@ import ScheduleBlock from "../ScheduleBlock/ScheduleBlock";
 import './DayBlock.css';
 
 function DayBlock(props :any) {
-  const {initialHour, blockedHours, workingHours, userBlockSize, level, winningHours, isCompleted} = props;
+  const {initialHour, blockedHours, workingHours, userBlockSize, level, winningHours, isCompleted, gapSize} = props;
   const STARTING_HOUR = workingHours[0].hour;
   const [hourBlockWidth, setHourBlockWidth] = useState(0);
   const [workingHoursList, setWorkingHours] = useState(workingHours);
@@ -57,6 +57,7 @@ function DayBlock(props :any) {
                 startingX={evaluateXPosition(initialHour)} 
                 hourPixelWidth={hourBlockWidth}/>
         </div>
+        <div>Gap Block Size: {gapSize}</div>
     </div>
   );
 }

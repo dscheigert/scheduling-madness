@@ -41,6 +41,7 @@ function Calendar(props : any) {
           blockedHours={level.blockedHours} 
           workingHours={level.workingHours}
           isActive={level.active}
+          gapSize={level.gapSize}
           isCompleted={level.completed}
           /> :  <></>
           return dayBlock;

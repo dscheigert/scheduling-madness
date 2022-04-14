@@ -13,4 +13,5 @@ export interface Level {
   winningHours : number[];
   active : Boolean;
   completed : Boolean;
+  gapSize : number;
 }

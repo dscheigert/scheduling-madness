@@ -18,6 +18,7 @@ export const initialLevelsState : Level[] = [{
     winningHours : [13,15,17],
     active : false,
     completed : false, 
+    gapSize : 2
 },
 {
     workingHours : evaluateWorkingHours(14, 10),
@@ -27,6 +28,18 @@ export const initialLevelsState : Level[] = [{
     initialHour : 21,
     winningHours : [13, 15],
     active : false,
-    completed : false
+    completed : false,
+    gapSize : 2
+},
+{
+    workingHours : evaluateWorkingHours(18, 8),
+    blockedHours : [{hour: 8, size:1, xValue:0},{hour: 12, size:1, xValue:0},{hour: 15, size:1, xValue:0},{hour: 16, size:1, xValue:0},{hour: 17, size:1, xValue:0}, {hour: 18, size:1, xValue:0}, {hour: 19, size:1, xValue:0}],
+    collisionBlocks : [8,12,15,16,17,18,19],
+    userBlockSize : 2,
+    initialHour : 22,
+    winningHours : [13],
+    active : false,
+    completed : false,
+    gapSize : 3
 }
 ]

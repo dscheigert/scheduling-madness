@@ -9,7 +9,7 @@ function ScheduleBlock(props : any) {
     const masterCollideBlocks = useAppSelector(selectCollisionBlocks);
 
     const {hourPixelWidth, startingX, size, initialHour, startingHour, winningHours, isLevelComplete} = props;
-    const [chosenHour, setChosenHour] = useState(initialHour);
+    const [chosenHour, setChosenHour] = useState(0);
     const [controlledPosition, setControlledPosition] = useState({x:0, y:0});
     const [collision, setCollision] = useState(false);
     const [collideBlocks, setCollideBlocks] = useState(masterCollideBlocks);
@@ -49,6 +49,7 @@ function ScheduleBlock(props : any) {
 
     useEffect(() => {
         if(!isNaN(controlledPosition.x)){
+            console.log(evaluateHourForXValue(controlledPosition.x));
             setChosenHour(evaluateHourForXValue(controlledPosition.x));
         }
     },[controlledPosition]);
