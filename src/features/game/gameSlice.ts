@@ -2,7 +2,7 @@ import {  createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {initialLevelsState} from '../../data/levels'
 import {Level} from '../../data/interfaces';
 import { RootState } from '../../app/store';
-import { timerActions } from '../../components/Timer';
+import { timerActions } from '../../components/Timer/Timer';
 
 export interface GameState {
   levels: Level[];

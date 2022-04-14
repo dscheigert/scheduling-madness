@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { useEffect, useState } from "react";
-import { useAppSelector, useAppDispatch } from "../app/hooks";
-import { selectTimerStatus,end, recordPoints } from "../features/game/gameSlice";
+import { useAppSelector, useAppDispatch } from "../../app/hooks";
+import { selectTimerStatus,end, recordPoints } from "../../features/game/gameSlice";
 export enum timerActions {
     START,
     STOP,
@@ -27,7 +27,6 @@ function DayBlock(props :any) {
             break;
         case timerActions.STOP:
             clearInterval(timer);
-            console.log("stopped");
             dispatch(recordPoints(totalPoints));
             setTimer(0);
             break;

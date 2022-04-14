@@ -1,8 +1,8 @@
 import './App.css';
-import Calendar from './components/Calendar';
+import Calendar from './components/Calendar/Calendar';
 import { useAppSelector } from './app/hooks';
 import { selectLevels } from './features/game/gameSlice';
-import HowTo from './components/HowTo';
+import HowTo from './components/HowTo/HowTo';
 
 function App() {
   const levels = useAppSelector(selectLevels);

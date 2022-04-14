@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { HourBlock } from "../data/interfaces";
-import ScheduleBlock from "./ScheduleBlock";
+import { HourBlock } from "../../data/interfaces";
+import ScheduleBlock from "../ScheduleBlock/ScheduleBlock";
+import './DayBlock.css';
 
 function DayBlock(props :any) {
   const {initialHour, blockedHours, workingHours, userBlockSize, level, winningHours, isCompleted} = props;
@@ -24,7 +25,7 @@ function DayBlock(props :any) {
 
   useEffect(() => {
     const blockedHoursList = blockedHours.map((val: HourBlock) => {        
-        const hourBlock :HourBlock = {hour: val.hour, size: 1, xValue : evaluateXPosition(val.hour)}
+        const hourBlock :HourBlock = {hour: val.hour, size: val.size, xValue : evaluateXPosition(val.hour)}
         return hourBlock;
     });
     setBlockedHoursList(blockedHoursList);
@@ -34,26 +35,26 @@ function DayBlock(props :any) {
       return (hour - STARTING_HOUR) * hourBlockWidth;
   }
   return (
-    <div className="DayBlockWrapper" style={{width:'100%', margin:'auto', position: 'relative'}}>
-        <div className="DayBlock" style={{border: '.25px solid black', display:'flex', height: '2vw', width:'100%', textAlign: 'left'}}>
+    <div className="DayBlockWrapper">
+        <div className="DayBlock">
             {workingHours.map((val: HourBlock) => 
-                <div key={val.hour} id={`${level}_${val.hour}_block`} style={{border: '.5px solid black', width: `100%`, height:'inherit', display:'inline-flex', textAlign: 'center'}}>
+                <div className="HourBlock" key={val.hour} id={`${level}_${val.hour}_block`}>
                     {val.hour}
                 </div>
             )}
         </div>
-        <div className="DayBlock" style={{width: '100%', border: '.25px solid red', height: '4vw', position:'relative'}}>
-        {blockedHoursList.map((block: HourBlock) => {
-            return (<div className="BlockedHour" style={{left : `${block.xValue}px`, border: '.5px solid black', width:`${hourBlockWidth*block.size}px`,position:"absolute",backgroundColor:"gray", height:"4vw"}}></div>)
-            })}
-            <ScheduleBlock 
-              isLevelComplete={isCompleted} 
-              size={userBlockSize} 
-              winningHours={winningHours} 
-              initialHour={initialHour} 
-              startingHour={STARTING_HOUR} 
-              startingX={evaluateXPosition(initialHour)} 
-              hourPixelWidth={hourBlockWidth}/>
+        <div className="ScheduleBlocks">
+          {blockedHoursList.map((block: HourBlock) => {
+              return (<div className="BlockedHour" style={{left : `${block.xValue}px`, width:`${hourBlockWidth*block.size}px`}}></div>)
+              })}
+              <ScheduleBlock 
+                isLevelComplete={isCompleted} 
+                size={userBlockSize} 
+                winningHours={winningHours} 
+                initialHour={initialHour} 
+                startingHour={STARTING_HOUR} 
+                startingX={evaluateXPosition(initialHour)} 
+                hourPixelWidth={hourBlockWidth}/>
         </div>
     </div>
   );

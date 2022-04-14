@@ -1,0 +1,35 @@
+/* .DayBlockWrapper {
+  width:100%;
+  margin: auto;
+  position: relative;
+} */
+
+.DayBlock {
+  border: .25px solid black; 
+  display:flex; 
+  height: 2vw; 
+  width:100%; 
+  text-align: left;
+}
+
+.HourBlock{
+  border: .5px solid black;
+  width: 100%;
+  height:inherit;
+  display:inline-flex; 
+  text-align: center;
+}
+
+.ScheduleBlocks{
+  width: 100%;
+  border: .25px solid black;
+  height: 4vw;
+  position:relative;
+}
+
+.BlockedHour{
+  border: .5px solid black;
+  position:absolute;
+  background-color:gray;
+  height:4vw;
+}

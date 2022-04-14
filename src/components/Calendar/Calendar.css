@@ -1,0 +1,11 @@
+.CalendarWrapper {
+  width: 70%;
+  margin: auto; 
+  position: relative;
+}
+.Calendar {
+  border: 1px solid black;
+  width: 70vw;
+  height: 40vw;
+  text-align: center;
+}

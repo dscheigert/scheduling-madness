@@ -1,8 +1,10 @@
-import DayBlock from "./DayBlock";
-import { Level } from "../data/interfaces";
-import { begin, restart, selectIsGameComplete, selectIsGameStarted, selectRecordedPoints } from '../features/game/gameSlice';
-import { useAppDispatch, useAppSelector } from "../app/hooks";
-import Timer from "./Timer";
+import DayBlock from "../DayBlock/DayBlock";
+import { Level } from "../../data/interfaces";
+import { begin, restart, selectIsGameComplete, selectIsGameStarted, selectRecordedPoints } from '../../features/game/gameSlice';
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import Timer from "../Timer/Timer";
+import './Calendar.css'; // Tell webpack that Button.js uses these styles
+
 
 function Calendar(props : any) {
   const {levels} = props;
@@ -23,12 +25,12 @@ function Calendar(props : any) {
   }
 
   return (
-    <div className="CalendarWrapper" style={{width:'70%', margin:'auto', position: 'relative'}}>
+    <div className="CalendarWrapper">
       {(!gameCompleted && !gameStarted ) && <button onClick={handleBegin}>Begin</button>}
       {gameCompleted && <button onClick={handleRestart}>Restart</button>}
       {gameCompleted && <div>You win with {totalPoints} points!</div>}
       {gameStarted &&  <Timer display={!gameCompleted} startingPoints={STARTING_POINTS}></Timer>}
-      {(gameStarted && !gameCompleted) && <div className="Calendar" style={{border: '1px solid black', width: '70vw', height: '40vw', textAlign:'center'}}>
+      {(gameStarted && !gameCompleted) && <div className="Calendar">
         {levels.map((level : Level, i: number) => 
         {
           const dayBlock = level.active ? <DayBlock 

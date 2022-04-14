@@ -1,13 +1,13 @@
-import React, { useState, useEffect} from "react";
+import { useState, useEffect} from "react";
 import Draggable from "react-draggable"
-import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { completeLevel, selectIsGameComplete } from "../features/game/gameSlice";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { completeLevel, selectIsGameComplete } from "../../features/game/gameSlice";
+import './ScheduleBlock.css';
 
 function ScheduleBlock(props : any) {
     const {hourPixelWidth, startingX, size, initialHour, startingHour, winningHours, isLevelComplete} = props;
     const [chosenHour, setChosenHour] = useState(initialHour);
     const [controlledPosition, setControlledPosition] = useState({x:0, y:0});
-    const [isCorrect, setIsCorrect] = useState(false);
     const dispatch = useAppDispatch();
 
     const gameCompleted = useAppSelector(selectIsGameComplete);
@@ -34,19 +34,17 @@ function ScheduleBlock(props : any) {
             setControlledPosition({x:startingX, y:0})
         }
     },[gameCompleted]);
-    
     useEffect(() => {
         if(winningHours.includes(chosenHour)){
             dispatch(completeLevel());
         }
-        setIsCorrect(winningHours.includes(chosenHour));
     },[chosenHour]);
     useEffect(() => {
         setControlledPosition({x:startingX, y:0})
     },[props.startingX]);
     return (
         <Draggable scale={1} disabled={isLevelComplete} bounds="parent" onStop={handleStop} position={controlledPosition}>
-            <div style={{border: '.5px solid black', backgroundColor:`${isLevelComplete ? 'green' : 'orange'}`, width: `${(hourPixelWidth * size)}px`, height: '4vw'}}></div>
+            <div className="DraggableBlock" style={{backgroundColor:`${isLevelComplete ? 'green' : 'orange'}`, width: `${(hourPixelWidth * size)}px`}}></div>
         </Draggable>
     );
 }

@@ -26,5 +26,5 @@ export const initialLevelsState : Level[] = [{
     winningHours : [13, 15],
     active : false,
     completed : false
-
-}]
+}
+]
