@@ -8,8 +8,9 @@
 .Calendar {
   border: 1px solid black;
   width: 70vw;
-  height: 100%;
+  height: auto;
   text-align: center;
+  background-color: #FAF9F6;
 }
 .StandardButton{
   width: 100px;

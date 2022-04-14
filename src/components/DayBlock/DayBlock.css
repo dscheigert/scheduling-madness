@@ -1,8 +1,6 @@
-/* .DayBlockWrapper {
-  width:100%;
-  margin: auto;
-  position: relative;
-} */
+.DayBlockWrapper {
+  height: 9vw;
+}
 
 .DayBlock {
   border: .25px solid black; 
@@ -31,4 +29,13 @@
   position:absolute;
   background-color:gray;
   height:4vw;
+}
+.Opaque{
+  position: absolute;
+  width: 100%;
+  height: inherit;
+  background: lightgray;
+  opacity: .75;
+  display: flex;
+  align-items: stretch;
 }

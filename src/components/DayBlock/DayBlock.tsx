@@ -35,30 +35,33 @@ function DayBlock(props :any) {
       return (hour - STARTING_HOUR) * hourBlockWidth;
   }
   return (
-    <div className="DayBlockWrapper">
-        <div className="DayBlock">
-            {workingHours.map((val: HourBlock) => 
-                <div className="HourBlock" key={val.hour} id={`${level}_${val.hour}_block`}>
-                    {val.hour}
-                </div>
-            )}
+    <>
+        <div className="DayBlockWrapper">
+        <div className="Opaque" style={{display: isCompleted ? '' : 'none'}}></div>
+            <div className="DayBlock">
+                {workingHours.map((val: HourBlock) => 
+                    <div className="HourBlock" key={val.hour} id={`${level}_${val.hour}_block`}>
+                        {val.hour}
+                    </div>
+                )}
+            </div>
+            <div className="ScheduleBlocks">
+              {blockedHoursList.map((block: HourBlock) => {
+                  return (<div key={block.hour} className="BlockedHour" style={{left : `${block.xValue}px`, width:`${hourBlockWidth*block.size}px`,position:"absolute",backgroundColor:"gray", height:"4vw"}}></div>)
+                  })}
+                  <ScheduleBlock 
+                    isLevelComplete={isCompleted} 
+                    size={userBlockSize} 
+                    winningHours={winningHours} 
+                    initialHour={initialHour} 
+                    startingHour={STARTING_HOUR} 
+                    blockedHours={blockedHoursList}
+                    startingX={evaluateXPosition(initialHour)} 
+                    hourPixelWidth={hourBlockWidth}/>
+            </div>
+            <div>Gap Block Size: {gapSize}</div>
         </div>
-        <div className="ScheduleBlocks">
-          {blockedHoursList.map((block: HourBlock) => {
-              return (<div key={block.hour} className="BlockedHour" style={{left : `${block.xValue}px`, width:`${hourBlockWidth*block.size}px`,position:"absolute",backgroundColor:"gray", height:"4vw"}}></div>)
-              })}
-              <ScheduleBlock 
-                isLevelComplete={isCompleted} 
-                size={userBlockSize} 
-                winningHours={winningHours} 
-                initialHour={initialHour} 
-                startingHour={STARTING_HOUR} 
-                blockedHours={blockedHoursList}
-                startingX={evaluateXPosition(initialHour)} 
-                hourPixelWidth={hourBlockWidth}/>
-        </div>
-        <div>Gap Block Size: {gapSize}</div>
-    </div>
+    </>
   );
 }
 

@@ -41,5 +41,27 @@ export const initialLevelsState : Level[] = [{
     active : false,
     completed : false,
     gapSize : 3
+},
+{
+    workingHours : evaluateWorkingHours(18, 8),
+    blockedHours : [{hour: 8, size:1, xValue:0},{hour: 22, size:1, xValue:0},{hour: 12, size:1, xValue:0},{hour: 15, size:1, xValue:0},{hour: 16, size:1, xValue:0},{hour: 17, size:1, xValue:0}, {hour: 18, size:1, xValue:0}, {hour: 19, size:1, xValue:0}],
+    collisionBlocks : [8,12,15,22,16,17,18,19],
+    userBlockSize : 1,
+    initialHour : 20,
+    winningHours : [9,23,11,25],
+    active : false,
+    completed : false,
+    gapSize : 2
+},
+{
+    workingHours : evaluateWorkingHours(24, 8),
+    blockedHours : [{hour: 8, size:1, xValue:0},{hour: 22, size:1, xValue:0},{hour: 15, size:1, xValue:0},{hour: 16, size:1, xValue:0},{hour: 17, size:1, xValue:0}, {hour: 18, size:1, xValue:0}, {hour: 19, size:1, xValue:0},{hour: 20, size:1, xValue:0},{hour: 15, size:1, xValue:0},{hour: 21, size:1, xValue:0},{hour: 15, size:1, xValue:0}],
+    collisionBlocks : [8,15,22,16,17,18,19,20,21],
+    userBlockSize : 1,
+    initialHour : 28,
+    winningHours : [31,23,27,9,14],
+    active : false,
+    completed : false,
+    gapSize : 4
 }
 ]
