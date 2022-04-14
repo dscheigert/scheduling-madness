@@ -8,7 +8,7 @@ function App() {
   const levels = useAppSelector(selectLevels);
   return (
     <div className="App" style={{textAlign: 'center'}}>
-      <HowTo/>
+      {/* <HowTo/> */}
       <Calendar levels={levels}/>
     </div>
   );

@@ -12,6 +12,7 @@ const evaluateWorkingHours = (dayLength : number, startingHour : number) => {
 export const initialLevelsState : Level[] = [{
     workingHours : evaluateWorkingHours(12, 8),
     blockedHours : [{hour: 12, size:1, xValue:0}],
+    collisionBlocks : [12],
     userBlockSize : 3,
     initialHour : 14,
     winningHours : [13,15,17],
@@ -20,7 +21,8 @@ export const initialLevelsState : Level[] = [{
 },
 {
     workingHours : evaluateWorkingHours(14, 10),
-    blockedHours : [{hour: 12, size:1, xValue:0}, {hour: 18, size:2, xValue:0}],
+    blockedHours : [{hour: 12, size:1, xValue:0}, {hour: 18, size:1, xValue:0}, {hour: 19, size:1, xValue:0}],
+    collisionBlocks : [12,18,19],
     userBlockSize : 3,
     initialHour : 21,
     winningHours : [13, 15],

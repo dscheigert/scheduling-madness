@@ -28,7 +28,6 @@
 }
 
 .BlockedHour{
-  border: .5px solid black;
   position:absolute;
   background-color:gray;
   height:4vw;

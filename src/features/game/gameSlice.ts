@@ -11,6 +11,7 @@ export interface GameState {
   currentLevel : number;
   timerAction : timerActions;
   points : number;
+  collisionBlocks : number[]
 }
 
 const initialState: GameState = {
@@ -19,7 +20,8 @@ const initialState: GameState = {
   gameCompleted : false,
   currentLevel: 0,
   timerAction : timerActions.STOP,
-  points : 0
+  points : 0,
+  collisionBlocks : []
 };
 
 
@@ -29,6 +31,7 @@ export const gameSlice = createSlice({
   reducers: {
     begin: (state) => {
       state.levels[state.currentLevel].active = true;
+      state.collisionBlocks = state.levels[state.currentLevel].collisionBlocks;
       state.gameStarted = true;
       state.timerAction = timerActions.START;
     },
@@ -46,6 +49,7 @@ export const gameSlice = createSlice({
       })
       state.currentLevel = 0;
       state.levels[state.currentLevel].active = true;
+      state.collisionBlocks = state.levels[state.currentLevel].collisionBlocks;
       state.gameStarted = true;
     },
     recordPoints: (state, action : PayloadAction<number>) => {
@@ -56,12 +60,16 @@ export const gameSlice = createSlice({
         state.levels[state.currentLevel].completed = true;
         if(state.currentLevel < state.levels.length -1){
           state.currentLevel += 1;
+          state.collisionBlocks = state.levels[state.currentLevel].collisionBlocks;
           state.levels[state.currentLevel].active = true;
         }
         else{
           state.timerAction = timerActions.STOP;
           state.gameCompleted = true;
         }
+    },
+    updateCollisionBlocks: (state, action: PayloadAction<number[]>) => {
+      state.collisionBlocks = action.payload;
     }
   },
   // The `extraReducers` field lets the slice handle actions defined elsewhere,
@@ -88,6 +96,7 @@ export const selectIsGameComplete = (state: RootState) => state.game.gameComplet
 export const selectLevels = (state: RootState) => state.game.levels;
 export const selectTimerStatus = (state: RootState) => state.game.timerAction;
 export const selectRecordedPoints = (state: RootState) => state.game.points;
+export const selectCollisionBlocks = (state: RootState) => state.game.collisionBlocks;
 
 
 // We can also write thunks by hand, which may contain both sync and async logic.

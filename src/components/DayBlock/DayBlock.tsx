@@ -25,7 +25,7 @@ function DayBlock(props :any) {
 
   useEffect(() => {
     const blockedHoursList = blockedHours.map((val: HourBlock) => {        
-        const hourBlock :HourBlock = {hour: val.hour, size: val.size, xValue : evaluateXPosition(val.hour)}
+        const hourBlock :HourBlock = {hour: val.hour, size: 1, xValue : evaluateXPosition(val.hour)}
         return hourBlock;
     });
     setBlockedHoursList(blockedHoursList);
@@ -45,7 +45,7 @@ function DayBlock(props :any) {
         </div>
         <div className="ScheduleBlocks">
           {blockedHoursList.map((block: HourBlock) => {
-              return (<div className="BlockedHour" style={{left : `${block.xValue}px`, width:`${hourBlockWidth*block.size}px`}}></div>)
+              return (<div className="BlockedHour" style={{left : `${block.xValue}px`, width:`${hourBlockWidth*block.size}px`,position:"absolute",backgroundColor:"gray", height:"4vw"}}></div>)
               })}
               <ScheduleBlock 
                 isLevelComplete={isCompleted} 
@@ -53,6 +53,7 @@ function DayBlock(props :any) {
                 winningHours={winningHours} 
                 initialHour={initialHour} 
                 startingHour={STARTING_HOUR} 
+                blockedHours={blockedHoursList}
                 startingX={evaluateXPosition(initialHour)} 
                 hourPixelWidth={hourBlockWidth}/>
         </div>
