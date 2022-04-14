@@ -2,3 +2,13 @@
     border: .5px solid black;
     height : 4vw;
 }
+.Collision{
+    opacity: .7;
+    background-color : red;
+}
+.Correct{
+    background-color : green;
+}
+.Default{
+    background-color : orange;
+}

@@ -40,10 +40,10 @@ function ScheduleBlock(props : any) {
 
     const evaluateColor = (isLevelComplete : Boolean, collision : Boolean) => {
         if(collision){
-            return 'red';
+            return 'Collision';
         }
         else {
-            return isLevelComplete ? 'green' : 'orange';
+            return isLevelComplete ? 'Correct' : 'Default';
         }
     }
 
@@ -78,7 +78,8 @@ function ScheduleBlock(props : any) {
 
     return (
         <Draggable scale={1} disabled={isLevelComplete} bounds="parent" onStop={handleStop} position={controlledPosition}>
-            <div className="DraggableBlock" style={{backgroundColor:`${evaluateColor(isLevelComplete,collision)}`, width: `${(hourPixelWidth * size)}px`}}></div>
+
+            <div className={`DraggableBlock  ${evaluateColor(isLevelComplete, collision)}`} style={{ width: `${(hourPixelWidth * size)}px`}}></div>
         </Draggable>
     );
 }

@@ -4,7 +4,7 @@ import { begin, restart, selectIsGameComplete, selectIsGameStarted, selectRecord
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import Timer from "../Timer/Timer";
 import {Button, Typography} from '@mui/material';
-import './Calendar.css'; // Tell webpack that Button.js uses these styles
+import './Calendar.css'; 
 
 
 function Calendar(props : any) {
