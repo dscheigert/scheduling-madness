@@ -47,8 +47,10 @@ function Calendar(props : any) {
       {gameCompleted && 
         <>
         <div className="ButtonWrapper"><Button variant="outlined" className="StandardButton" onClick={handleGoHome}>Home</Button></div>
-       <div className="ButtonWrapper"><Button variant="outlined" className="StandardButton" onClick={handleRestart}>Restart</Button></div></>}
-      {gameCompleted && <Typography className="WinMessage" variant="h6">You win with {totalPoints} points!</Typography>}
+        <div className="ButtonWrapper"><Button variant="outlined" className="StandardButton" onClick={handleRestart}>Restart</Button></div>      
+        {totalPoints <= 0 ? <Typography className="WinMessage" variant="h6">Better Luck Next Time</Typography> : <Typography className="WinMessage" variant="h6">You win with {totalPoints} points!</Typography>}
+        </> 
+        }
       {gameStarted &&  <Timer display={!gameCompleted} startingPoints={STARTING_POINTS}></Timer>}
       {(gameStarted && !gameCompleted) && <div className="Calendar">
         {levels.map((level : Level, i: number) => 

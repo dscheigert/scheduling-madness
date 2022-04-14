@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { useEffect, useState } from "react";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { selectTimerStatus,end, recordPoints } from "../../features/game/gameSlice";
+import { selectTimerStatus, end, recordPoints } from "../../features/game/gameSlice";
 export enum timerActions {
     START,
     STOP,
@@ -38,15 +38,17 @@ function DayBlock(props :any) {
       }
   }, [timerStatus]);
 
-const countDown = () => {
-    setTotalPoints(totalPoints => totalPoints - 1);
-    if (totalPoints === 0) { 
-      setTotalPoints(0);
+  useEffect(() => {
+    if(totalPoints === 0){
+      clearInterval(timer);
       dispatch(recordPoints(totalPoints));
       dispatch(end());
-      clearInterval(timer);
       setTimer(0);
     }
+}, [totalPoints]);
+
+const countDown = () => {
+    setTotalPoints(totalPoints => totalPoints - 1);
   }
 
   return (
