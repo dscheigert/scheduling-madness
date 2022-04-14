@@ -1,0 +1,12 @@
+.Timer{
+    background-color: lightgray;
+    border: 1px solid black;
+    width: 10%;
+    margin: auto;
+    margin-bottom:10px;
+    text-align: center;
+    padding:10px;
+}
+.Points{
+    padding: 5px;
+}

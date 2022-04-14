@@ -2,6 +2,9 @@
 import { useEffect, useState } from "react";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { selectTimerStatus, end, recordPoints } from "../../features/game/gameSlice";
+import { Typography } from "@mui/material";
+import './Timer.css';
+
 export enum timerActions {
     START,
     STOP,
@@ -54,7 +57,7 @@ const countDown = () => {
   return (
       <>
     {display && <div className="Timer">
-            {totalPoints}
+          <Typography className="Points" variant="h6">{totalPoints}</Typography>
         </div>}
     </>
   );
