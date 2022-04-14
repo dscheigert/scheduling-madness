@@ -9,7 +9,7 @@ import './Calendar.css'; // Tell webpack that Button.js uses these styles
 
 function Calendar(props : any) {
   const {levels} = props;
-  const STARTING_POINTS = 1000;
+  const STARTING_POINTS = 5000;
   //redux
   const dispatch = useAppDispatch();
   const gameStarted = useAppSelector(selectIsGameStarted);
