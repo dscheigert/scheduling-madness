@@ -1,13 +1,13 @@
-import { useState } from "react";
+import './HowTo.css'; 
 
-function HowTo() {
-  const [active, setActive] = useState(false);
+function HowTo(props :any) {
+  const {active} = props;
 
   return (
     <>
-    <a onClick={() => setActive(true)}>How to Play</a>
     {active && <div className="HowTo">
-        <img src="img/howto.png"></img>
+        <img src="img/howtoinitial.png"></img>
+        <img src="img/howtosolution.png"></img>
     </div>}
     </>  
   );

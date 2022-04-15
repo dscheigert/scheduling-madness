@@ -18,9 +18,17 @@
 }
 .ButtonWrapper{
   padding: 10px;
-  margin-top: 10%;
+  margin-top: 5%;
   display:inline-block
 }
 .WinMessage{
   padding-top:1rem;
+}
+.WinPopup{
+  border-radius: 5px;
+  background-color: aliceblue;
+  margin-bottom: 40%;
+  min-width: 40vw;
+  min-height: 15vw;
+  text-align: center;
 }

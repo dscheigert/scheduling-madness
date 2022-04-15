@@ -85,7 +85,7 @@ export const gameSlice = createSlice({
     },
     shuffleLevels: (state) => {
       let currentIndex = state.levels.length,  randomIndex;
-      while (currentIndex != 0) {
+      while (currentIndex !== 0) {
     
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
