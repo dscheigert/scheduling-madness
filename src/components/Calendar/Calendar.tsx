@@ -1,6 +1,6 @@
 import DayBlock from "../DayBlock/DayBlock";
 import { Level } from "../../data/interfaces";
-import { begin, restart, selectIsGameComplete, selectIsGameStarted, selectRecordedPoints, goHome, shuffleLevels } from '../../features/game/gameSlice';
+import { begin, selectIsGameComplete, selectIsGameStarted, selectRecordedPoints, goHome, shuffleLevels } from '../../features/game/gameSlice';
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import Timer from "../Timer/Timer";
 import {Button, Typography} from '@mui/material';
@@ -30,10 +30,11 @@ function Calendar(props : any) {
     dispatch(begin());
   }
   
-  const handleRestart =() => {
-    dispatch(shuffleLevels());
-    dispatch(restart());
-  }
+  //TODO: this isn't working :(
+  // const handleRestart = () => {
+  //   dispatch(shuffleLevels());
+  //   dispatch(restart());
+  // }
 
   const handleGoHome = () => {
     dispatch(goHome());
@@ -52,7 +53,7 @@ function Calendar(props : any) {
         <Popup modal closeOnDocumentClick={false} open={showPopup} position="right center">
           <div className="WinPopup">
             <div className="ButtonWrapper"><Button variant="outlined" className="StandardButton" onClick={handleGoHome}>Home</Button></div>
-            <div className="ButtonWrapper"><Button variant="outlined" className="StandardButton" onClick={handleRestart}>Restart</Button></div>      
+            {/* <div className="ButtonWrapper"><Button variant="outlined" className="StandardButton" onClick={handleRestart}>Restart</Button></div>       */}
             {totalPoints <= 0 ? <Typography className="WinMessage" variant="h6">Better Luck Next Time</Typography> : <Typography className="WinMessage" variant="h6">You win with {totalPoints} points!</Typography>}
           </div>
         </Popup>
