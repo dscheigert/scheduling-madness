@@ -8,7 +8,7 @@ function ScheduleBlock(props : any) {
     const gameCompleted = useAppSelector(selectIsGameComplete);
     const masterCollideBlocks = useAppSelector(selectCollisionBlocks);
 
-    const {hourPixelWidth, startingX, size, initialHour, startingHour, winningHours, isLevelComplete} = props;
+    const {hourPixelWidth, startingX, size, startingHour, winningHours, isLevelComplete} = props;
     const [chosenHour, setChosenHour] = useState(0);
     const [controlledPosition, setControlledPosition] = useState({x:0, y:0});
     const [collision, setCollision] = useState(false);

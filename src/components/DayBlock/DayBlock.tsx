@@ -53,13 +53,12 @@ function DayBlock(props :any) {
                     isLevelComplete={isCompleted} 
                     size={userBlockSize} 
                     winningHours={winningHours} 
-                    initialHour={initialHour} 
                     startingHour={STARTING_HOUR} 
                     blockedHours={blockedHoursList}
                     startingX={evaluateXPosition(initialHour)} 
                     hourPixelWidth={hourBlockWidth}/>
             </div>
-            <div>Delivery Slot Size: {gapSize}</div>
+            <div>Schedule Slot Size: {gapSize}</div>
         </div>
     </>
   );
