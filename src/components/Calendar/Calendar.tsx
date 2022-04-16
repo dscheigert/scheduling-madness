@@ -13,6 +13,7 @@ import Leaderboard from "../Leaderboard/Leaderboard";
 function Calendar(props : any) {
   const {levels} = props;
   const STARTING_POINTS = 5000;
+  const LEADERBOARD_ON = true;
   const [showPopup, setShowPopup] = useState<boolean>(false);
 
   //redux
@@ -56,7 +57,7 @@ function Calendar(props : any) {
             <div className="ButtonWrapper"><Button variant="outlined" className="StandardButton" onClick={handleGoHome}>Home</Button></div>
             {/* <div className="ButtonWrapper"><Button variant="outlined" className="StandardButton" onClick={handleRestart}>Restart</Button></div>       */}
             {totalPoints <= 0 ? <Typography className="WinMessage" variant="h6">Better Luck Next Time</Typography> : <Typography className="WinMessage" variant="h6">You win with {totalPoints} points!</Typography>}
-            <Leaderboard></Leaderboard>
+            <Leaderboard enabled={LEADERBOARD_ON}></Leaderboard>
           </div>
         </Popup>
         </> 

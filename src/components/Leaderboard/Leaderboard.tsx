@@ -7,6 +7,7 @@ import { pushScore, selectLeaderboard } from "../../features/game/leaderboardSli
 import './Leaderboard.css';
 
 function Leaderboard(props :any) {
+  const {enabled} = props;
   const [displayScoreEntry, setDisplayScoreEntry] = useState<boolean>(false);
   const [inputName, setInputName] = useState<string>('');
   const [submitted, setSubmitted] = useState<boolean>(false);
@@ -50,16 +51,16 @@ function Leaderboard(props :any) {
         }
   }
 
-  return (
+  return enabled ? (
     <div className="Leaderboard">
         <Typography variant="h5">Leaderboard</Typography>
         {displayScoreEntry && 
         <>
-        <div style={{padding: '5px'}}>You made the Top 5!</div>
-        <div className="EntryForm">
-            <TextField style={{textAlign:'center'}} variant="outlined" type="" onChange={(evt) => handleInputChange(evt)} value={inputName} inputProps={{maxLength: 3, type: "text", onkeypress: 'return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))', style: {textAlign: 'center'}}}></TextField>
-            <div style={{paddingTop:'5px'}}><Button variant="outlined" disabled={inputName.length < 3 || submitted} onClick={handleScoreSubmit}>Submit</Button></div>
-        </div>
+          <div style={{padding: '5px'}}>You made the Top 5!</div>
+          <div className="EntryForm">
+              <TextField style={{textAlign:'center'}} variant="outlined" type="" onChange={(evt) => handleInputChange(evt)} value={inputName} inputProps={{maxLength: 3, type: "text", onkeypress: 'return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))', style: {textAlign: 'center'}}}></TextField>
+              <div style={{paddingTop:'5px'}}><Button variant="outlined" disabled={inputName.length < 3 || submitted} onClick={handleScoreSubmit}>Submit</Button></div>
+          </div>
         </>
         }
         {leaderBoardScores.map((score : Score, i) => 
@@ -70,7 +71,7 @@ function Leaderboard(props :any) {
             </div>
         )}
     </div>
-  );
+  ) : <></>;
 }
 
 export default Leaderboard;
