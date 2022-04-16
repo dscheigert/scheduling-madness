@@ -1,6 +1,6 @@
 import DayBlock from "../DayBlock/DayBlock";
 import { Level } from "../../data/interfaces";
-import { begin, restart, selectIsGameComplete, selectIsGameStarted, selectRecordedPoints, goHome, shuffleLevels } from '../../features/game/gameSlice';
+import { begin, selectIsGameComplete, selectIsGameStarted, selectRecordedPoints, goHome, shuffleLevels } from '../../features/game/gameSlice';
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import Timer from "../Timer/Timer";
 import {Button, Typography} from '@mui/material';
@@ -31,10 +31,11 @@ function Calendar(props : any) {
     dispatch(begin());
   }
   
-  const handleRestart =() => {
-    dispatch(shuffleLevels());
-    dispatch(restart());
-  }
+  //TODO: this isn't working :(
+  // const handleRestart = () => {
+  //   dispatch(shuffleLevels());
+  //   dispatch(restart());
+  // }
 
   const handleGoHome = () => {
     dispatch(goHome());

@@ -77,8 +77,7 @@ function ScheduleBlock(props : any) {
     },[props.startingX]);
 
     return (
-        <Draggable scale={1} disabled={isLevelComplete} bounds="parent" onStop={handleStop} position={controlledPosition}>
-
+        <Draggable scale={1} disabled={isLevelComplete && !gameCompleted} bounds="parent" onStop={handleStop} position={controlledPosition}>
             <div className={`DraggableBlock  ${evaluateColor(isLevelComplete, collision)}`} style={{ width: `${(hourPixelWidth * size)}px`}}></div>
         </Draggable>
     );

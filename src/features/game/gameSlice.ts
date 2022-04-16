@@ -50,18 +50,19 @@ export const gameSlice = createSlice({
       state.collisionBlocks = state.levels[state.currentLevel].collisionBlocks;
       state.gameStarted = false;
     },
-    restart: (state) => {
-      state.timerAction = timerActions.RESET;
-      state.gameCompleted = false;
-      state.levels.forEach((level) => {
-        level.active = false;
-        level.completed = false;
-      })
-      state.currentLevel = 0;
-      state.levels[state.currentLevel].active = true;
-      state.collisionBlocks = state.levels[state.currentLevel].collisionBlocks;
-      state.gameStarted = true;
-    },
+    //TODO: this isn't working and I have no time to fix :(
+    // restart: (state) => {
+    //   state.timerAction = timerActions.RESET;
+    //   state.gameCompleted = false;
+    //   state.levels.forEach((level) => {
+    //     level.active = false;
+    //     level.completed = false;
+    //   })
+    //   state.currentLevel = 0;
+    //   state.levels[state.currentLevel].active = true;
+    //   state.collisionBlocks = state.levels[state.currentLevel].collisionBlocks;
+    //   state.gameStarted = true;
+    // },
     recordPoints: (state, action : PayloadAction<number>) => {
       state.points = action.payload;
     },
@@ -95,7 +96,7 @@ export const gameSlice = createSlice({
   },
 });
 
-export const { begin, end, completeLevel, restart, recordPoints, goHome, shuffleLevels } = gameSlice.actions;
+export const { begin, end, completeLevel, recordPoints, goHome, shuffleLevels } = gameSlice.actions;
 
 export const selectIsGameStarted = (state: RootState) => state.game.gameStarted;
 export const selectIsGameComplete = (state: RootState) => state.game.gameCompleted;
