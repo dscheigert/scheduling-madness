@@ -7,6 +7,7 @@ import {Button, Typography} from '@mui/material';
 import Popup from 'reactjs-popup';
 import './Calendar.css'; 
 import { useEffect, useState } from "react";
+import Leaderboard from "../Leaderboard/Leaderboard";
 
 
 function Calendar(props : any) {
@@ -52,8 +53,9 @@ function Calendar(props : any) {
         <Popup modal closeOnDocumentClick={false} open={showPopup} position="right center">
           <div className="WinPopup">
             <div className="ButtonWrapper"><Button variant="outlined" className="StandardButton" onClick={handleGoHome}>Home</Button></div>
-            <div className="ButtonWrapper"><Button variant="outlined" className="StandardButton" onClick={handleRestart}>Restart</Button></div>      
+            {/* <div className="ButtonWrapper"><Button variant="outlined" className="StandardButton" onClick={handleRestart}>Restart</Button></div>       */}
             {totalPoints <= 0 ? <Typography className="WinMessage" variant="h6">Better Luck Next Time</Typography> : <Typography className="WinMessage" variant="h6">You win with {totalPoints} points!</Typography>}
+            <Leaderboard></Leaderboard>
           </div>
         </Popup>
         </> 

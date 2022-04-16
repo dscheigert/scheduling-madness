@@ -1,0 +1,12 @@
+.Leaderboard {
+    padding-top: 30px;
+}
+
+.ScoreEntry > div {
+    display: inline-block;
+    padding:5px
+}
+.EntryForm {
+    max-width: 9vw;
+    margin: auto;
+}

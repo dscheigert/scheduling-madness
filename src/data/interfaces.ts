@@ -15,3 +15,8 @@ export interface Level {
   completed : Boolean;
   gapSize : number;
 }
+
+export interface Score {
+  name: string;
+  score: number;
+}
